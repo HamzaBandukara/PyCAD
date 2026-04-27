@@ -276,4 +276,9 @@ The K-S distances reported in our paper were computed using Mathematica (except 
 PyCAD). Since PyCAD's K-S distance is evaluated via Monte Carlo sampling against a numerical PDF, results may vary by 
 approximately ±0.001 between runs. The PASSED/MARGINAL/FAILED classification should remain consistent across runs.
 
+---
+
+## Acknowledgements
+
+This work was supported by the Research Institute on Verified Trustworthy Software (VeTSS) grant "*Probabilistic Precision Tuning*".
 ****
