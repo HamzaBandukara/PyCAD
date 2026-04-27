@@ -1,4 +1,4 @@
-# PyCAD: A Prototype Tool For Exact Distribution of Probabilistic Programs using CADs 
+# PyCAD: A Prototype Tool for Exact Distribution of Probabilistic Programs Using CADs
 
 ---
 ### About
