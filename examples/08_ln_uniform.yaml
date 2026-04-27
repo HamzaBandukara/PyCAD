@@ -1,0 +1,7 @@
+name: "Paper Example 5 (Ln Approximation - Uniform)"
+formula: "(1/5)*((x - 1)^5) - (1/4)*((x - 1)^4) + (1/3)*((x - 1)^3) - (1/2)*((x - 1)^2) + x - 1 < t && 0 < x < 1"
+vars: [t, x]
+filename: "ln_approx_5_uni"
+mc_formula: "(1/5)*((x - 1)**5) - (1/4)*((x - 1)**4) + (1/3)*((x - 1)**3) - (1/2)*((x - 1)**2) + x - 1"
+mc_bounds:
+  x: [0, 1]

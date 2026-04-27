@@ -1,0 +1,11 @@
+name: "If/Else Disjoint (Beta 2,2)"
+formula: "If[x^2 - x >= 0, x/10, x^2 + 2] < t && 0 < x < 10"
+vars: [t, x]
+filename: "cav10_beta"
+t_min: 0
+t_max: 5
+distributions:
+  x: { type: beta, params: [2, 2, 0, 10] }
+mc_formula: "np.where(x**2 - x >= 0, x/10, x**2 + 2)"
+mc_bounds:
+  x: [0, 10]

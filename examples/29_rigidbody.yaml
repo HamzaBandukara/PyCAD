@@ -1,0 +1,9 @@
+name: "Rigid Body (Test 1)"
+formula: "-x1*x2 - 2*x2*x3 - x1 - x3 < t && -15 < x1 < 15 && -15 < x2 < 15 && -15 < x3 < 15"
+vars: [t, x1, x2, x3]
+filename: "rigidbody1"
+mc_formula: "-x1*x2 - 2*x2*x3 - x1 - x3"
+mc_bounds:
+  x1: [-15, 15]
+  x2: [-15, 15]
+  x3: [-15, 15]

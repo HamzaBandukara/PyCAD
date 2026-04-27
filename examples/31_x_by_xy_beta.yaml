@@ -1,0 +1,11 @@
+name: "x/(x+y) (Beta 2,2)"
+formula: "x/(x+y) < t && 1 < x < 4 && 1 < y < 4"
+vars: [t, x, y]
+filename: "x_by_xy_beta"
+distributions:
+  x: { type: beta, params: [2, 2, 1, 4] }
+  y: { type: beta, params: [2, 2, 1, 4] }
+mc_formula: "x / (x + y)"
+mc_bounds:
+  x: [1, 4]
+  y: [1, 4]

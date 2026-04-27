@@ -1,0 +1,9 @@
+name: "Sum (Standard Uniform)"
+formula: "1 < x < 2 && 1 < y < 2 && 1 < z < 2 && x + y + z < t"
+vars: [t, x, y, z]
+filename: "sum_standard"
+mc_formula: "x + y + z"
+mc_bounds:
+  x: [1, 2]
+  y: [1, 2]
+  z: [1, 2]

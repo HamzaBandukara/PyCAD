@@ -1,0 +1,9 @@
+name: "z/(z+1) (Beta 2,2)"
+formula: "z/(z+1) < t && 0 < z < 999"
+vars: [t, z]
+filename: "nonlin1_beta"
+distributions:
+  z: { type: beta, params: [2, 2, 0, 999] }
+mc_formula: "z / (z + 1)"
+mc_bounds:
+  z: [0, 999]

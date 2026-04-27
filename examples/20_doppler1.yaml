@@ -1,0 +1,9 @@
+name: "Doppler Effect (Test 1)"
+formula: "(-(3314/10 + (6/10)*T) * v) / ((3314/10 + (6/10)*T + u)^2) < t && -100 < u < 100 && 20 < v < 20000 && -30 < T < 50"
+vars: [t, u, v, T]
+filename: "doppler_test_1"
+mc_formula: "(-(331.4 + 0.6*T) * v) / ((331.4 + 0.6*T + u)**2)"
+mc_bounds:
+  u: [-100, 100]
+  v: [20, 20000]
+  T: [-30, 50]

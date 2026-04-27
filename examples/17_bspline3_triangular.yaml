@@ -1,0 +1,6 @@
+name: "bspline3 (Triangular)"
+formula: "-(u^3)/6 < t && 0 < u < 1"
+vars: [t, u]
+filename: "bspline3_tri"
+distributions:
+  u: { type: triangular, params: [0, 1, 0.5] }

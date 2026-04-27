@@ -1,0 +1,35 @@
+This project includes or depends on the following third-party software:
+
+QEPCAD B - Quantifier Elimination by Partial Cylindrical Algebraic Decomposition
+  License: BSD
+  Usage: Called as an external subprocess
+  Source: https://www.usna.edu/Users/cs/wcbrown/qepcad/B/QEPCAD.html
+
+Maxima - Computer Algebra System
+  License: GPL-2.0
+  Usage: Called as an external subprocess
+  Source: https://maxima.sourceforge.io/
+
+SymEngine - C++ Symbolic Mathematics Library
+  License: MIT
+  Usage: Linked at compile time (C++ headers and shared library)
+  Source: https://github.com/symengine/symengine
+
+ExprTk - C++ Mathematical Expression Toolkit
+  License: MIT
+  Usage: Header-only library included in cpp_math_engine/exprtk/
+  Source: https://github.com/ArashPartow/exprtk
+
+Z3 - SMT Solver
+  License: MIT
+  Usage: Python package (pip install z3-solver)
+  Source: https://github.com/Z3Prover/z3
+
+SymPy - Python Symbolic Mathematics
+  License: BSD-3-Clause
+  Usage: Python package
+  Source: https://github.com/sympy/sympy
+
+Note: Maxima and QEPCAD are invoked as separate processes and are not
+linked into PyCAD's source code. The Docker image bundles these programs
+for convenience; their respective licenses apply to their own code.

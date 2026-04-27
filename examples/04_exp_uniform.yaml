@@ -1,0 +1,7 @@
+name: "Paper Example 2 (e^x Expansion - Uniform)"
+formula: "1 + x + ((x^2)/2) + ((x^3)/6) + ((x^4)/24) + ((x^5)/120) < t && 0 < x < 1"
+vars: [t, x]
+filename: "exp_2_uni"
+mc_formula: "1 + x + (x**2)/2 + (x**3)/6 + (x**4)/24 + (x**5)/120"
+mc_bounds:
+  x: [0, 1]

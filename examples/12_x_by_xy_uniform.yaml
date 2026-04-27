@@ -1,0 +1,8 @@
+name: "x_by_xy (Uniform)"
+formula: "x/(x+y) < t && 1 < x < 4 && 1 < y < 4"
+vars: [t, x, y]
+filename: "x_by_xy_uni"
+mc_formula: "x / (x + y)"
+mc_bounds:
+  x: [1, 4]
+  y: [1, 4]

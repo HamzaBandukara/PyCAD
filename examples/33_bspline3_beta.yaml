@@ -1,0 +1,6 @@
+name: "BSpline3 (Beta 2,2)"
+formula: "-(u^3)/6 < t && 0 < u < 1"
+vars: [t, u]
+filename: "bspline3_beta"
+distributions:
+  u: { type: beta, params: [2, 2, 0, 1] }

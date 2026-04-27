@@ -1,0 +1,7 @@
+name: "Paper Example 3 (Cos Approximation - Uniform)"
+formula: "((x^4)/24) - ((x^2)/2) + 1 < t && 0 < x < pi/2"
+vars: [t, x]
+filename: "cos_approx_3_uni"
+mc_formula: "(x**4)/24 - (x**2)/2 + 1"
+mc_bounds:
+  x: [0, 1.5707963]

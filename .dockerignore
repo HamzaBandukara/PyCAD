@@ -1,0 +1,14 @@
+__pycache__
+*.pyc
+*.pyo
+*.egg-info
+*.so
+*.o
+.git
+.venv
+symengine/
+logs/
+benchmark_plots/*.png
+*.log
+cpp_math_engine/build/
+simplifier/build/

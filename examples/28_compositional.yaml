@@ -1,0 +1,11 @@
+name: "Compositional Example"
+formula: "(x / (x**2 + y**2 + z**2) < t) && (0 < x < 1) && (0 < y < 1) && (0 < z < 1)"
+vars: [t, x, y, z]
+filename: "compositional_example"
+t_min: 0.0
+t_max: 2.0
+mc_formula: "x / (x**2 + y**2 + z**2)"
+mc_bounds:
+  x: [0, 1]
+  y: [0, 1]
+  z: [0, 1]

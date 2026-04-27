@@ -1,0 +1,8 @@
+name: "Gröbner Basis Reduction (Sphere Intersecting Plane)"
+formula: "x^2 + y^2 + z^2 < t && x + y == 1 && -2 < z < 2"
+vars: [t, x, y, z]
+filename: "groebner_sphere"
+mc_formula: "x**2 + (1 - x)**2 + z**2"
+mc_bounds:
+  x: [-3, 4]
+  z: [-2, 2]

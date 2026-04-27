@@ -1,0 +1,7 @@
+name: "Paper Example 6 (Sin Approximation - Uniform)"
+formula: "((x^5)/120) - ((x^3)/6) + x < t && 0 < x < pi/2"
+vars: [t, x]
+filename: "sin_approx_uni"
+mc_formula: "(x**5)/120 - (x**3)/6 + x"
+mc_bounds:
+  x: [0, 1.5707963]

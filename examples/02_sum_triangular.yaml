@@ -1,0 +1,13 @@
+name: "Sum (Triangular)"
+formula: "1 < x < 2 && 1 < y < 2 && 1 < z < 2 && x + y + z < t"
+vars: [t, x, y, z]
+filename: "sum_triangular"
+distributions:
+  x: { type: triangular, params: [1, 2, 1.5] }
+  y: { type: triangular, params: [1, 2, 1.5] }
+  z: { type: triangular, params: [1, 2, 1.5] }
+mc_formula: "x + y + z"
+mc_bounds:
+  x: [1, 2]
+  y: [1, 2]
+  z: [1, 2]

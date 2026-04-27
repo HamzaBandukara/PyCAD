@@ -1,0 +1,9 @@
+name: "Paper Example 1 (Spherical)"
+formula: "x/(rt(2, x^2+y^2+z^2)) < t && 0 < x < 1 && 0 < y < 1 && 0 < z < 1"
+vars: [t, x, y, z]
+filename: "v_norm"
+mc_formula: "x / np.sqrt(x**2 + y**2 + z**2)"
+mc_bounds:
+  x: [0, 1]
+  y: [0, 1]
+  z: [0, 1]

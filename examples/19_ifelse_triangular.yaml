@@ -1,0 +1,11 @@
+name: "If/Else Disjoint Example (Triangular)"
+formula: "If[x^2 - x >= 0, x/10, x^2 + 2] < t && 0 < x < 10"
+vars: [t, x]
+filename: "cav10_triangular"
+t_min: 0
+t_max: 5
+distributions:
+  x: { type: triangular, params: [0, 10, 5] }
+mc_formula: "np.where(x**2 - x >= 0, x/10, x**2 + 2)"
+mc_bounds:
+  x: [0, 10]
