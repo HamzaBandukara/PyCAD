@@ -24,7 +24,7 @@ fastest setup.
 We provide a Docker image that includes all prerequisites bundled and ready to use. The image is built on Ubuntu 22.04.
 After pulling the Docker image, tag it locally for convenience:
 ```bash
-docker pull ghcr.io/hamzabandukara/pycad:0.1.0
+docker pull --platform linux/amd64 ghcr.io/hamzabandukara/pycad:0.1.0
 docker tag ghcr.io/hamzabandukara/pycad:0.1.0 pycad
 ```
 
