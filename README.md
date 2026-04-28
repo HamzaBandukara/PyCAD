@@ -40,8 +40,7 @@ The `rundocker.sh` wrapper handles volume mounts and argument forwarding automat
 ./rundocker.sh --shell                           # Open an interactive shell
 ```
 
-Output files will appear in the `outputs/` folder in your current directory. PyCAD runs natively on Linux, macOS,
-and Windows via WSL2. Docker on Windows requires a WSL2 backend.
+Output files will appear in the `outputs/` folder in your current directory. 
 
 #### Manual `docker run`
 
@@ -64,10 +63,16 @@ Benchmark plots will appear in `outputs/benchmark_plots/`.
 
 To build the Docker image from source:
 ```bash
-docker build -t pycad .
+docker build --platform linux/amd64 -t pycad .
 ```
 
 This will install all dependencies and compile the C++ components. Once built, use the commands from Option 1 to run.
+We also provide a script to execute this, to use it, run the following from the root:
+```bash
+./builddocker.sh
+```
+
+Note that the amd64 build works on arm64 via emulation.
 
 ---
 ### Option 3: Native Installation
@@ -129,6 +134,10 @@ Output plots appear in `outputs/` and `outputs/benchmark_plots/` respectively.
 | `--no-z3` | Disable Z3 Boolean simplification |
 | `--no-plot` | Skip plotting |
 | `--plot-points <n>` | Number of evaluation points for plotting (default: 400) |
+
+### Benchmarks
+
+Note that benchmarker does not take any flags mentioned prior. To skip the IMU Complementary Filter Example (~90 minutes), you can use the `--skip-imu` flag.
 
 ---
 ## YAML Structure

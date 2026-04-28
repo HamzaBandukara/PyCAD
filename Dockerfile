@@ -78,8 +78,9 @@ case "$1" in\n\
         python3 /opt/pycad/run.py --test 1\n\
         ;;\n\
     --benchmarks)\n\
+        shift\n\
         echo "Running full benchmark suite..."\n\
-        python3 /opt/pycad/benchmarker.py\n\
+        python3 /opt/pycad/benchmarker.py "$@"\n\
         ;;\n\
     *)\n\
         python3 /opt/pycad/run.py "$@"\n\

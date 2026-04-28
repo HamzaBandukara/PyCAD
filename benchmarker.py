@@ -1,6 +1,7 @@
 import os
 import csv
 import time
+import sys
 import warnings
 import numpy as np
 from run import run_test_orchestrator
@@ -303,7 +304,7 @@ BENCHMARK_SUITE = {
         }
     },
     "v_norm": {
-        "name": "IMU / Vector Norm",
+        "name": "Vector Norm",
         "formula": "x/(rt(2, x^2+y^2+z^2)) < t && 0 < x < 1 && 0 < y < 1 && 0 < z < 1",
         "vars": ["t", "x", "y", "z"],
         "integrand": "auto",
@@ -463,28 +464,25 @@ BENCHMARK_SUITE = {
             'T': lambda n: -50 + 80 * np.random.beta(2, 2, n)
         }
     },
-    ###################################################################
-    # Note the example below is commented out as it is massive (takes approx 2 hour)
-    # Feel free to uncomment and try!
-    ###################################################################
-    # "ifElseEx": {
-    #     "name": "IMU Complementary Filter (AST Root Elim)",
-    #     "formula": "If[c >= 0, rt(2, (c/rt(2, a^2 + b^2 + c^2) + 1) * 0.5), (-b/rt(2, a^2 + b^2 + c^2)) / (2.0 * rt(2, (1 - c/rt(2, a^2 + b^2 + c^2)) * 0.5))] < t && -1 < a < 1 && -1 < b < 1 && -1 < c < 1",
-    #     "vars": ["t", "a", "b", "c"],
-    #     "integrand": "auto",
-    #     "t_min": None, "t_max": None,
-    #     "filename": "imu_comp_filter",
-    #     "mc_func": lambda a, b, c: np.where(
-    #         c >= 0,
-    #         np.sqrt((c / np.sqrt(a ** 2 + b ** 2 + c ** 2) + 1) * 0.5),
-    #         (-b / np.sqrt(a ** 2 + b ** 2 + c ** 2)) / (
-    #                     2.0 * np.sqrt((1 - c / np.sqrt(a ** 2 + b ** 2 + c ** 2)) * 0.5))
-    #     ),
-    #     "mc_bounds": {'a': (-1, 1), 'b': (-1, 1), 'c': (-1, 1)}
-    # },
+    "IMUFilter": {
+        "name": "IMU Complementary Filter (AST Root Elim)",
+        "formula": "If[c >= 0, rt(2, (c/rt(2, a^2 + b^2 + c^2) + 1) * 0.5), (-b/rt(2, a^2 + b^2 + c^2)) / (2.0 * rt(2, (1 - c/rt(2, a^2 + b^2 + c^2)) * 0.5))] < t && -1 < a < 1 && -1 < b < 1 && -1 < c < 1",
+        "vars": ["t", "a", "b", "c"],
+        "integrand": "auto",
+        "t_min": None, "t_max": None,
+        "filename": "imu_comp_filter",
+        "mc_func": lambda a, b, c: np.where(
+            c >= 0,
+            np.sqrt((c / np.sqrt(a ** 2 + b ** 2 + c ** 2) + 1) * 0.5),
+            (-b / np.sqrt(a ** 2 + b ** 2 + c ** 2)) / (
+                    2.0 * np.sqrt((1 - c / np.sqrt(a ** 2 + b ** 2 + c ** 2)) * 0.5))
+        ),
+        "mc_bounds": {'a': (-1, 1), 'b': (-1, 1), 'c': (-1, 1)}
+    },
+
 }
 
-def run_benchmarks():
+def run_benchmarks(skip_imu: bool = False):
     os.makedirs("./outputs/benchmark_plots", exist_ok=True)
     csv_filename = f"benchmark_results_{int(time.time())}.csv"
 
@@ -498,6 +496,10 @@ def run_benchmarks():
     results = []
 
     for key, tc in BENCHMARK_SUITE.items():
+        if skip_imu and key == "IMUFilter":
+            print(f"{'IMU Complementary Filter':<25} | {'--':^10} | {'--':^10} | {'--':^10} | {'--':^10} | {'--':^10} | SKIPPED | {'--':^10}")
+            continue
+
         # Inject the benchmark_plots path into the filename
         tc["filename"] = f"/benchmark_plots/{tc.get('filename', key)}"
 
@@ -516,8 +518,6 @@ def run_benchmarks():
                 status = "FAILED"   # Visible discrepancy from Monte Carlo
         except Exception as e:
             status = "CRASHED"
-            print(e)
-            exit(10)
             timings = {"cad": 0.0, "cdf": 0.0, "pdf": 0.0, "plot": 0.0, "total": 0.0, "KS": -1.0}
 
         # Print & Record
@@ -540,7 +540,7 @@ def run_benchmarks():
     # Write Results to CSV
     with open(csv_filename, mode='w', newline='', encoding='utf-8') as file:
         writer = csv.DictWriter(file, fieldnames=["Name", "CAD Time", "CDF Time", "PDF Time", "Plot Time", "Total Time",
-                                                  "Status"])
+                                                  "Status", "KS"])
         writer.writeheader()
         writer.writerows(results)
 
@@ -566,4 +566,5 @@ def run_benchmarks():
 
 if __name__ == "__main__":
     warnings.filterwarnings("ignore")
-    run_benchmarks()
+    skip_imu = "--skip-imu" in sys.argv
+    run_benchmarks(skip_imu=skip_imu)

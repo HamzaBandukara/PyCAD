@@ -19,4 +19,4 @@ export PYTHONPATH=$PYTHONPATH:.
 
 # 4. Execute the project
 # This passes any arguments you give the script (like test numbers) to run.py
-python3 benchmarker.py
+python3 -B benchmarker.py "$@"
